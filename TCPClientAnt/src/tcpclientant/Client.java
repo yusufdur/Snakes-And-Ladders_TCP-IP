@@ -92,7 +92,10 @@ public class Client extends Thread { // Player
             System.out.println("client calismaya basladi ");
             while (this.isListening) {
 
-                int byteSize = input.read(); //blocking
+                // NOT :
+                // Tam stringi bulmak için gönderirken gönderdiğin datanın uzunluğunuda yaz  Örnek : "_2_go"
+                // byteSize'ı bulduktan sonra hesaplama yaparak tam stringe ulaş
+                int byteSize = input.read(); //blocking     
                 byte bytes[] = new byte[byteSize];
                 input.read(bytes);
                 String s = new String(bytes, StandardCharsets.UTF_8);
